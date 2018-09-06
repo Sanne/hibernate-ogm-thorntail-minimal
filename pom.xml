@@ -12,6 +12,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
+        <hibernate.ogm.version>5.4.0-SNAPSHOT</hibernate.ogm.version>
+        <thorntail.version>4.0.0-SNAPSHOT</thorntail.version>
     </properties>
 
     <dependencyManagement>
@@ -19,14 +21,7 @@
             <dependency>
                 <groupId>io.thorntail</groupId>
                 <artifactId>thorntail-bom</artifactId>
-                <version>4.0.0-SNAPSHOT</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.hibernate.ogm</groupId>
-                <artifactId>hibernate-ogm-bom</artifactId>
-                <version>5.4.0.Beta1</version>
+                <version>${thorntail.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -39,9 +34,16 @@
             <artifactId>thorntail-ogm</artifactId>
         </dependency>
 
+        <!-- overrides the OGM version provided by the current Thorntail version -->
+        <dependency>
+            <groupId>org.hibernate.ogm</groupId>
+            <artifactId>hibernate-ogm-core</artifactId>
+            <version>${hibernate.ogm.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.hibernate.ogm</groupId>
             <artifactId>hibernate-ogm-infinispan-remote</artifactId>
+            <version>${hibernate.ogm.version}</version>
         </dependency>
 
         <dependency>
